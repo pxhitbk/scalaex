@@ -1,0 +1,57 @@
+QUICK REFERENCE 
+
+- REPL: Scala interpreter, an interactive shell  for  writing  Scala  expressions  and  programs.
+
+- String interpolation:
+	scala> val name = "Nilanjan"
+		name: String = Nilanjan
+	scala> s"My name $name"
+		res0: String = My name Nilanjan
+
+- val & var for define variable
+	+ val:	Once  initialized  a val can’t  be  changed  or  reassigned  to  some other value (similar to final variables in Java)
+	+ var: is reassignable;
+
+- Placeholder character (_): has difference meaning depend on difference context
+	1. assign default value for variable
+	2. a placeholder for a parameter
+		scala> val evenNumbers = List(2, 4, 6, 8, 10)
+			evenNumbers: List[Int] = List(2, 4, 6, 8, 10)
+		scala> evenNumbers.foldLeft(0) { (a: Int, b:Int) => a + b }
+			res19: Int = 30
+		scala> evenNumbers.foldLeft(0) { (a, b) => a + b } 
+			res20: Int = 30
+		scala> evenNumbers.foldLeft(0) { _ + _ }       //<= the point here 
+			res21: Int = 30
+
+- Variable initialize lazily (only for val):
+	+ scala> lazy val forLater = someTimeConsumingOperation() 
+				forLater: Unit = <lazy
+
+- Cons method (::) : method defined in List
+
+- Define function:
+	1. With return type
+		def welcome(name: String) :String = {"Exciting times ahead" + name }
+	2. Without return type
+		def welcome(name: String) {"Exciting times ahead" + name }
+
+- Parameterized types ([]): same like Java Generic (<>)		
+
+- Closure: pass a function as a parameter to another function
+- Function literals: Scala provides a shorthand way to create a function in which you write only the function body
+
+- Collection:
+	+ In Scala, Listis immutable and makes functional-style programming easy
+	+ Adding or removing an element from an immutable collection creates a new modified collection instance without modifying the existing one
+	
+	+ Add element at front of List with method (::)
+		scala> val newList = 3 :: oldList
+	+ Add element at end (:+)
+	+ Remove element with filterNot() method
+		scala> val afterDelete = newList.filterNot(_ == 3)
+
+- for Loop:
+	+ Use generator (<-) to  iterate through a collection
+		
+			
