@@ -5,7 +5,7 @@
   <version>0.0.1-SNAPSHOT</version>
   <inceptionYear>2008</inceptionYear>
   <properties>
-    <scala.version>2.7.0</scala.version>
+    <scala.version>2.9.0</scala.version>
   </properties>
 
   <repositories>
@@ -13,6 +13,11 @@
       <id>scala-tools.org</id>
       <name>Scala-Tools Maven2 Repository</name>
       <url>http://scala-tools.org/repo-releases</url>
+    </repository>
+    <repository>
+      <id>oss.sonatype.org</id>
+      <name>Sonatype</name>
+      <url>https://oss.sonatype.org/content/repositories/releases/</url>
     </repository>
   </repositories>
 
@@ -42,6 +47,17 @@
       <version>1.2.5</version>
       <scope>test</scope>
     </dependency>
+   <!--  <dependency>
+	    <groupId>org.mongodb</groupId>
+	    <artifactId>casbah_${scala.version}</artifactId>
+	    <version>|release|</version>
+	</dependency> -->
+   	<!-- <dependency>
+		<groupId>org.mongodb</groupId>
+		<artifactId>casbah_2.11</artifactId>
+		<version>2.7.1</version>
+	</dependency> -->
+
   </dependencies>
 
   <build>

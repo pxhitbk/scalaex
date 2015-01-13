@@ -34,7 +34,7 @@ QUICK REFERENCE
 	1. With return type
 		def welcome(name: String) :String = {"Exciting times ahead" + name }
 	2. Without return type
-		def welcome(name: String) {"Exciting times ahead" + name }
+		def welcome(name: String) {"Exciting times ahead" + name } //no equal sign (=) always return Unit (void)
 
 - Parameterized types ([]): same like Java Generic (<>)		
 
@@ -42,16 +42,43 @@ QUICK REFERENCE
 - Function literals: Scala provides a shorthand way to create a function in which you write only the function body
 
 - Collection:
-	+ In Scala, Listis immutable and makes functional-style programming easy
-	+ Adding or removing an element from an immutable collection creates a new modified collection instance without modifying the existing one
-	
-	+ Add element at front of List with method (::)
-		scala> val newList = 3 :: oldList
-	+ Add element at end (:+)
-	+ Remove element with filterNot() method
-		scala> val afterDelete = newList.filterNot(_ == 3)
+	1. List
+		+ In Scala, List is immutable and makes functional-style programming easy
+		+ Adding or removing an element from an immutable collection creates a new modified collection instance without modifying the existing one
+		
+		+ Add element at front of List with method (::)
+			scala> val newList = 3 :: oldList
+		+ Add element at end (:+)
+		+ Remove element with filterNot() method
+			scala> val afterDelete = newList.filterNot(_ == 3)
+	2. Set
+		+ scala.collection.immutable.Set
+		+ scala.collection.mutable.Set
+		+ Example
+			var jetSet = Set("Boeing", "Airbus")  //instance immutable Set
+			jetSet += "Lear"
+	3. Map
+		+ Example
+			> val romanNumeral = Map( 1 -> "I", 2 -> "II", 3 -> "III", 4 -> "IV", 5 -> "V" )
+			
+			> val treasureMap = Map[Int, String]()
+				| treasureMap += (1 -> "Go to island.")
+				| treasureMap += (2 -> "Find big X on ground.")
 
 - for Loop:
 	+ Use generator (<-) to  iterate through a collection
+	
+- Singleton Object
+	- Companion object: object shares the same name with the class, both defined in same source file
+	- Companion class
+	- A class and its companion object can access each other’s private members
+	
+- LITERAL is a way to write a constant value directly in code.
+	
+- Operator notation
+	Ex: 
+		s indexOf 'a' //indexOf is an operator
+
+- Precedence	
 		
 			
