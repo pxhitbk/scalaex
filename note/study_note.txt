@@ -65,9 +65,6 @@ QUICK REFERENCE
 				| treasureMap += (1 -> "Go to island.")
 				| treasureMap += (2 -> "Find big X on ground.")
 
-- for Loop:
-	+ Use generator (<-) to  iterate through a collection
-	
 - Singleton Object
 	- Companion object: object shares the same name with the class, both defined in same source file
 	- Companion class
@@ -82,10 +79,81 @@ QUICK REFERENCE
 - Precedence	
 
 - BUILD-IN CONTROL STRUCTURE
-	+ (if) expression
+	+ (if) Expression
 		Example:
 			> if (!someCond) args(0) else "Another case"
 			> println(if (!args.isEmpty) args(0) else "default.txt")
 	+ (while) loop
 		> while (condition) {}
 		> do {} while(condition)
+		
+	+ (for) Loop:
+		+ Use generator (<-) to  iterate through a collection: 
+			> for(v <- varList)
+				println(v)
+		+ Range syntax
+			> for (v <- 1 to 4)
+				println(i + ",") // result: 1,2,3,4
+			> for (v <- 1 util 4) 
+				println(v + ",") //result: 1,2,3
+		+ Filtering
+				/*single condition for filtering*/
+			> 	val filesHere = (new java.io.File(".")).listFiles 				//get all file in current folder
+				for (file  <- filesHere if file.getName.endsWith(".scala"))		//loop filtered files that name end with ".scala"
+					println(file)												//print file
+				
+				/*multiple condition for filtering*/
+			> 	for (file <- filesHere
+					if file.isFile
+					if file.getName.endsWith(".scala")
+				) println(file)
+		+ Producing a new collection from iterator
+			>	val fileArray = for (...) yield file				
+	
+	+ Exception handling with (try) expressions
+		+ Throwing exception
+			>	throw new RuntimeException("Number must be even")
+		+ catch
+			>	try {
+				} catch {
+					case ex: FileNotFoundException => //handle missing file
+					case ex: IOException => //Handle other I/O error
+				}
+		+ finally
+			>	try {
+				} finally {
+					file.close()
+				}
+		+ TIPS - NOTE:
+			+ Avoid returning values from (finally) clauses => prevent side effect
+	+ Match expressions (match) & (case)
+		>	arg match {
+				case "North" => println("north side")
+				case "West" => println("west side")
+				case _ => println("Wrong area")
+			}
+	
+- USEFUL TIPS
+	+ Performance
+	1. Use non-trivial computation once
+	> def grep(pattern: String) =
+		for (
+			file <- filesHere
+			if file.getName.endsWith(".scala");
+			line <- fileLines(file)
+			if line.trim.matches(pattern)  			// .trim is non-trivial computation
+		) println(file +": "+ line.trim)
+		grep(".*gcd.*")
+	
+	//Solution: Mid-stream variable bindings
+	> def grep(pattern: String) =
+		for (
+			file <- filesHere
+			if file.getName.endsWith(".scala");
+			line <- fileLines(file)
+			trimmed = line.trim
+			if trimmed.matches(pattern)
+		) println(file +": "+ trimmed)
+	
+				
+	
