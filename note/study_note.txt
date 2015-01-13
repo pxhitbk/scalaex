@@ -41,7 +41,7 @@ QUICK REFERENCE
 - Closure: pass a function as a parameter to another function
 - Function literals: Scala provides a shorthand way to create a function in which you write only the function body
 
-- Collection:
+- COLLECTION:
 	1. List
 		+ In Scala, List is immutable and makes functional-style programming easy
 		+ Adding or removing an element from an immutable collection creates a new modified collection instance without modifying the existing one
@@ -80,5 +80,12 @@ QUICK REFERENCE
 		s indexOf 'a' //indexOf is an operator
 
 - Precedence	
-		
-			
+
+- BUILD-IN CONTROL STRUCTURE
+	+ (if) expression
+		Example:
+			> if (!someCond) args(0) else "Another case"
+			> println(if (!args.isEmpty) args(0) else "default.txt")
+	+ (while) loop
+		> while (condition) {}
+		> do {} while(condition)
