@@ -11,6 +11,6 @@ object Animals {
   }
   class Cow extends Animal {
     type SuitalbeFood = Grass
-    override def eat(food: SuitalbeFood) {}
+    override def eat(food: SuitalbeFood) {} //only Grass is valid food
   }
 }
