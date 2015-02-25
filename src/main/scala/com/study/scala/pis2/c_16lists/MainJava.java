@@ -1,15 +1,14 @@
 package com.study.scala.pis2.c_16lists;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.List;
-
-import scala.actors.threadpool.Arrays;
 
 public class MainJava {
 	static Integer[] nums = {3, 6, 4, 10, 5, 2, 8}  ;
 	public static void main(String[] args) {
-		List<Integer> lnums = Arrays.asList((Integer[])nums);
+		List<Integer> lnums = Arrays.asList((Integer[]) nums);
 		List<Integer> s = isort(lnums);
 		printList(s);
 	}

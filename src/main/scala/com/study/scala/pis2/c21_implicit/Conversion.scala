@@ -35,7 +35,7 @@ class Conversion {
      * Before giving up, it looks for an implicit conversion that can repair the problem. 
      * In this case, it finds function2ActionListener. 
      * It tries that conversion method, sees that it works, and moves on. */
-			  button.addActionListener(
+ 			  button.addActionListener(
 				 (_: ActionEvent) => println("pressed")    //<= type error if not has appropriate implicit method with type ActionEvent => Unit
 			  )
         

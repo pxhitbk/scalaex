@@ -1,7 +1,6 @@
 package com.study.scala.pis2.c15_patternmatching
 
 import math.{E, Pi}
-import scala.actors.Actor
 import scala.collection.immutable.Map
 
 object MainC15 {
