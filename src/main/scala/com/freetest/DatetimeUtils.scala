@@ -125,21 +125,25 @@ class Quarter(val dateTime: DateTime) extends Ordered[Quarter] {
   val beginDate = new DateTime(quarter._2, quarter._1 * 3 - 2, 1, 0, 0) 
   val endDate = beginDate.plusMonths(3).minusMillis(1)
   
-  override def compare(that: Quarter): Int = {
-    val quarterNumberDiff = this.quarter._1 - that.quarter._1 
-		(this.quarter._2 - that.quarter._2) match {
-      case 0 => quarterNumberDiff
-      case a => a
-    } 
-  }
-
   def plusQuarter(num: Int): Quarter = {
     new Quarter(beginDate.plusMonths(num * 3))
+  }
+  
+  def contains(date: DateTime): Boolean = {
+    date.getMillis >= beginDate.getMillis && date.getMillis <= endDate.getMillis 
   }
   
   override def equals (that: Any): Boolean = that match {
     case t: Quarter => (this compare t) == 0
     case _ => false
+  }
+
+  override def compare(that: Quarter): Int = {
+    val quarterNumberDiff = this.quarter._1 - that.quarter._1 
+    (this.quarter._2 - that.quarter._2) match {
+      case 0 => quarterNumberDiff
+      case a => a
+    } 
   }
   
   override def toString() = {
