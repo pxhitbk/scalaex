@@ -8,30 +8,37 @@ import java.sql.Date
 import org.joda.time.Days
 import org.joda.time.DateTime
 import org.joda.time.Months
-import com.enjapan.careercard.utils.DatetimeUtils
 
 /**
  * @author g10-macmini
  */
 object ComplexFor {
   def main(args: Array[String]): Unit = {
+    val c = Calendar.getInstance
+    c.set(2015, 1, 1)
+    val d1 = new DateTime(c.getTime)
+    c.set(2017, 4, 28)
+    val d2 = new DateTime(c.getTime)
+    
+    val v = DatetimeUtils.quartersBetween(d1, d2)
+    println(v)
+    
     //        testExpiredDeposit()
 //        testDateTimeRange()
 //    testGroupPeriod()
+//    testQuarter
     
-    
-//    var m = scala.collection.mutable.Map(new DateTime(2015,11,22, 0, 0) -> 1)
+  }
+  
+  def draft() {
+    //    var m = scala.collection.mutable.Map(new DateTime(2015,11,22, 0, 0) -> 1)
     
     val jd = new DateTime
 //    println(jd)
 //    println(new Date(jd.getMillis))
         
-    val c = Calendar.getInstance
-    c.set(2015, 1, 1)
-    val d1 = new DateTime(c.getTime)
-    c.set(2015, 1, 28)
-    val d2 = new DateTime(c.getTime)
-    println(d2.getMonthOfYear)
+    
+    
 //    println(d1.monthOfYear().compareTo(d2.monthOfYear().getDateTime))
         
 //    d.monthOfYear().compareTo(new DateTime(i.date).monthOfYear().getDateTime)
@@ -60,8 +67,15 @@ object ComplexFor {
     
     println(">>"+dt1.monthOfYear().compareTo(dt3.monthOfYear().getDateTime) )
     println(">>"+Months.monthsBetween(dt1, dt3).getMonths )
-  }
 
+  }
+  
+  def testQuarter() {
+    val d = new DateTime(2015, 10, 14, 10, 20)
+    val q = new Quarter(d)
+    println(q)
+  }
+  
   def testGroupPeriod() {
     val c = Calendar.getInstance
     c.set(2014, 1, 1)
