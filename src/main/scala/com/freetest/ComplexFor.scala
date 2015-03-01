@@ -14,14 +14,17 @@ import org.joda.time.Months
  */
 object ComplexFor {
   def main(args: Array[String]): Unit = {
-    val c = Calendar.getInstance
-    c.set(2015, 1, 1)
-    val d1 = new DateTime(c.getTime)
-    c.set(2017, 4, 28)
-    val d2 = new DateTime(c.getTime)
-    
+    val d1 = new DateTime(2015, 12, 1, 0, 0)
+    val d2 = new DateTime(2016, 6, 3, 0, 0)
+    println(new Quarter(d2))
     val v = DatetimeUtils.quartersBetween(d1, d2)
     println(v)
+    
+    val q1 = new Quarter(d1)
+    println(q1 >= new Quarter(d2))
+    
+    val qrange = for (i <- 0 to v) yield q1.plusQuarter(i)
+    println(qrange.mkString(", \n"))
     
     //        testExpiredDeposit()
 //        testDateTimeRange()
