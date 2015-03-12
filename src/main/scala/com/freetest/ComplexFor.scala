@@ -14,25 +14,45 @@ import org.joda.time.Months
  */
 object ComplexFor {
   def main(args: Array[String]): Unit = {
-    val d1 = new DateTime(2016, 3, 1, 0, 0)
-    val d2 = new DateTime(2016, 6, 3, 0, 0)
+    val d1 = new DateTime(2014, 2, 4, 14, 0)
+    val d2 = new DateTime(2015, 2, 28, 0, 0)
     val d3 = new DateTime(2016, 2, 1, 4, 10)
-    println(new Quarter(d2))
-    val v = DatetimeUtils.quartersBetween(d1, d2)
-    println(v)
+    val d4 = new DateTime(2016, 3, 2, 0, 0)
+    val d6 = new DateTime(2016, 4, 1, 0, 0)
     
-    val q1 = new Quarter(d1)
-    println("contains: " + q1.contains(d3))
-    println(q1 >= new Quarter(d2))
+    val dateFormat: SimpleDateFormat = new SimpleDateFormat("yyyyMMddHHmm")
+    println(">>>" + dateFormat.format(new Timestamp(d1.getMillis)))
     
-    val qrange = for (i <- 0 to v) yield q1.plusQuarter(i)
-//    println(qrange.mkString(", \n"))
+    val calendar = Calendar.getInstance()
+    calendar.set(Calendar.AM_PM, Calendar.PM)
+        calendar.set(Calendar.HOUR, 11)
+        calendar.set(Calendar.MINUTE, 59)
+        calendar.set(Calendar.SECOND, 59)
+        calendar.set(Calendar.MILLISECOND, 999)
+     val   eDate = new Timestamp(calendar.getTimeInMillis)
     
+    println(eDate)
+    
+    val q2 = new Quarter(d2) 
+    val qd = q2.plusQuarter(-1)
+//    println(q2.beginDate + " - " + qd.beginDate)
+//    println(">>>>"+ Months.monthsBetween(qd.endDate, q2.beginDate).getMonths)
+//    println(">>>>"+ Months.monthsBetween(d4, d6).getMonths)
+//    println("diff: " + DatetimeUtils.quartersBetween(q2.beginDate, qd.beginDate))
+    
+    val endQuarter = new Quarter(new DateTime(System.currentTimeMillis()))
+    val startQuarter = endQuarter.plusQuarter(-29)
+    val endDate = endQuarter.endDate
+    val startDate = startQuarter.beginDate
+//    println("diff: " + DatetimeUtils.quartersBetween(startDate, endDate))
+    val numOfQuaters = DatetimeUtils.quartersBetween(startDate, endDate)
+      val quarterRanges = for (i <- 0 to numOfQuaters) yield (i, startQuarter.plusQuarter(i))
+//      println(quarterRanges.mkString(", \n"))
     //        testExpiredDeposit()
 //        testDateTimeRange()
 //    testGroupPeriod()
 //    testQuarter
-    
+     
   }
   
   def draft() {
@@ -76,9 +96,19 @@ object ComplexFor {
   }
   
   def testQuarter() {
-    val d = new DateTime(2015, 10, 14, 10, 20)
-    val q = new Quarter(d)
-    println(q)
+    val d1 = new DateTime(2016, 3, 1, 0, 0)
+    val d2 = new DateTime(2016, 6, 3, 0, 0)
+    val d3 = new DateTime(2016, 2, 1, 4, 10)
+    
+    val q2 = new Quarter(d2) 
+    
+    println(q2.plusQuarter(-2))
+    val v = DatetimeUtils.quartersBetween(d1, d2)
+    println(v)
+    
+    val q1 = new Quarter(d1)
+    println("contains: " + q1.contains(d3))
+    println(q1 >= new Quarter(d2))
   }
   
   def testGroupPeriod() {

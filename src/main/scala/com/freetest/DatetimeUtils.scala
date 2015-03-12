@@ -116,7 +116,7 @@ object DatetimeUtils {
 //      case 0 => quarterDiff
 //      case a => a * 4 + quarterDiff
 //    }
-    Months.monthsBetween(from, to).getMonths / 3
+    Math.abs(Months.monthsBetween(from, to).getMonths / 3)
   }
 }
 
