@@ -1,0 +1,14 @@
+import sbt.Keys._
+import sbt._
+
+object Common {
+  val settings = Seq(
+    version := "1.0",
+    scalaVersion := "2.11.6"
+  )
+
+  val libraryDependencies = Seq(
+    "joda-time" % "joda-time" % "2.7",
+    "org.scalatest" %% "scalatest" % "2.2.1" % "test"
+  )
+}
