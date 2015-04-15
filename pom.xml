@@ -53,6 +53,16 @@
       <version>1.2.5</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	<groupId>org.scalaz</groupId>
+	<artifactId>scalaz-core_2.11</artifactId>
+	<version>7.1.1</version>
+</dependency>
+<dependency>
+	<groupId>org.scalacheck</groupId>
+	<artifactId>scalacheck_2.11</artifactId>
+	<version>1.12.2</version>
+</dependency>
    <!--  <dependency>
 	    <groupId>org.mongodb</groupId>
 	    <artifactId>casbah_${scala.version}</artifactId>
