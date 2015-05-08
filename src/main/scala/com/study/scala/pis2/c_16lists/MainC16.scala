@@ -39,7 +39,7 @@ object MainC16 {
       List(0, 0, 1) :: Nil
 
       val empty = Nil
-      
+      fruit.map(_ + "dss")
       val sorted = isortPm(nums)
       println(sorted.mkString(", "))
   }
