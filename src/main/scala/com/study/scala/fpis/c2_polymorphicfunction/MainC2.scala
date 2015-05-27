@@ -8,10 +8,38 @@ import scala.annotation.tailrec
 object MainC2 {
   def main(args: Array[String]): Unit = {
     val arr: Array[Double] = Array(9.0, 10.5, 22, 7.0, 14.5, 14, 55, 12, 15, 7.0)
-    val v = binarySearch(arr, 22d)
-    val v1 = binarySearch1(arr, 7.0)
-    val v2 = PolymorphicFunctions.binarySearch(arr, 22d, (d1: Double, d2: Double) => d1 > d2)
-    println("Found: " + v1)
+//    val v = binarySearch(arr, 22d)
+//    val v1 = binarySearch1(arr, 7.0)
+//    val v2 = PolymorphicFunctions.binarySearch(arr, 22d, (d1: Double, d2: Double) => d1 > d2)
+//    println("Found: " + v1)
+    def greater(a: Double, b: Double): Boolean = a > b
+    println(isSorted(arr, greater))
+  }
+
+
+  def isSorted[A](as: Array[A], gt:(A,A) => Boolean): Boolean = {
+    def go(n: Int): Boolean = {
+      if(n >= as.length - 1) true
+      else if (!gt(as(n), as(n+1))) false
+      else go(n + 1)
+    }
+    go(0)
+  }
+
+  def partital1[A,B,C](a: A, f:(A,B) => C): B => C = { b =>
+    f(a,b)
+  }
+
+  def currying[A,B,C](f:(A,B) => C): A => (B => C) = { a =>
+    (b) => f(a, b)
+  }
+
+  def uncurry[A,B,C](f: A => B => C): (A,B) => C = { (a,b) =>
+    f(a)(b)
+  }
+
+  def compose[A,B,C](f: B => C, g: A => B): A => C = {
+    (a) => f(g(a))
   }
 
   // First, a binary search implementation, specialized to `Double`,
