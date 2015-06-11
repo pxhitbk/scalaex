@@ -106,19 +106,19 @@ case class Person(name: String) {
   def bothGrandfathersForLoop(): Maybe[(Person, Person)] = Person.bothGrandfathersForLoop(this)
 }
 
-object Main {
-  def main(args: Array[String]) {
-    println(Person("P").masternalGrandFather)
-    println(Person("P1").bothGrandfatherFlatMap)
-    println(Person("P").bothGrandfathersForLoop())
-
-    Person.persons foreach { p =>
-      assert(Just(Just(p)).flatten == Just(p))
-    }
-
-    assert(Just(MaybeNot).flatten == MaybeNot)
-
-    assert(MaybeNot.flatten == MaybeNot)
-  }
-}
+//object Main {
+//  def main(args: Array[String]) {
+//    println(Person("P").masternalGrandFather)
+//    println(Person("P1").bothGrandfatherFlatMap)
+//    println(Person("P").bothGrandfathersForLoop())
+//
+//    Person.persons foreach { p =>
+//      assert(Just(Just(p)).flatten == Just(p))
+//    }
+//
+//    assert(Just(MaybeNot).flatten == MaybeNot)
+//
+//    assert(MaybeNot.flatten == MaybeNot)
+//  }
+//}
 
