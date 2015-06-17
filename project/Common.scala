@@ -17,7 +17,8 @@ object Common {
     "org.scalaz" %% "scalaz-effect" % scalazVersion,
     "org.scalaz" %% "scalaz-typelevel" % scalazVersion,
     "org.scalaz" %% "scalaz-scalacheck-binding" % scalazVersion,
-    "ch.qos.logback" % "logback-classic" % "1.0.9"
+    "ch.qos.logback" % "logback-classic" % "1.0.9",
+    "com.typesafe.akka" %% "akka-actor" % "2.3.11"
   )
 
   scalacOptions += "-feature"
