@@ -1,4 +1,4 @@
-package com.study.scala.fpis.c7_functionalparallelism
+package com.study.scala.fpis.c6_functionalstate
 
 /**
  * Created by g10-macmini on 6/17/15.
